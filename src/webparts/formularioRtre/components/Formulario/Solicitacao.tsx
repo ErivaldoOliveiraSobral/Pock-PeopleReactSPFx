@@ -6,6 +6,7 @@ import styles from "./Solicitacao.module.scss";
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react';
 import { CustomPeople } from "../CustomPeople/CustomPeople";
+import { CustomDropDown } from "../CustomDropDown/CustomDropDown";
 
 export class Solicitacao extends React.Component<any, any> {
     constructor(props: ISolicitacaoProps) {
@@ -22,8 +23,10 @@ export class Solicitacao extends React.Component<any, any> {
         return (
             <div className={styles.solicitacao}>
                 {/* <TextField name="NomeSolicitante" label="Solicitante" onChange={e => this.change(e)} /> */}
-                <CustomPeople selectedItems={e => this.changeSelectedPeople(e)} context={this.props.context}/>
-                <TextField label="Item" />
+                <CustomPeople errorMessage={this.state.NomeSolicitante} selectedItems={e => this.changeSelectedPeople(e)} context={this.props.context}/>
+                {/* <TextField label="Item" /> */}
+                <label>Item</label>
+                <CustomDropDown values={this.props.item} />
                 <TextField label="Tipo de Solicitação" />
                 <TextField label="Prazo de Validade" />
                 <TextField label="Aprovador" />

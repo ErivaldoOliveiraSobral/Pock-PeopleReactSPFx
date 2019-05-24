@@ -1,40 +1,34 @@
 import * as React from 'react';
 
 import { PeoplePicker } from "@pnp/spfx-controls-react/lib/PeoplePicker";
+import styles from '../CustomPeople/CustomPeople.module.scss';
 
 export class CustomPeople extends React.Component<any, any> {
     constructor(props: {}) {
         super(props);
         this.state = {
-            userManagerIDs: []
+            required: "This is required",
+            onSubmission: false,
+
         };
-        // this._getManager = this._getManager.bind(this);
     }
 
     public render() {
         return (
-            <PeoplePicker
-                context={this.props.context}
-                titleText="Nome do Solicitante"
-                personSelectionLimit={4}
-                groupName={""} // Leave this blank in case you want to filter from all users
-                showtooltip={false}
-                isRequired={true}
-                disabled={false}
-                selectedItems={this.props.selectedItems}
-                // errorMessage={(this.state.userManagerIDs.length === 0 && this.state.onSubmission === true) ? this.state.required : " "}
-                // errorMessageclassName={styles.hideElementManager}
-            />
+            <div className={styles.CustomPeople}>
+                <PeoplePicker
+                    context={this.props.context}
+                    titleText="Nome do Solicitante"
+                    personSelectionLimit={1}
+                    groupName={""} // Leave this blank in case you want to filter from all users
+                    showtooltip={false}
+                    isRequired={true}
+                    disabled={false}
+                    selectedItems={this.props.selectedItems}
+                    errorMessage={(this.props.errorMessage.length === 0 && this.state.onSubmission === true) ? this.state.required : " "}
+                    // errorMessageclassName={styles.hideElementManager}
+                />
+            </div>
         );
     }
-    // private _getManager(items: any[]) {
-    //     this.state.userManagerIDs.length = 0;
-    //     let tempuserMngArr = [];
-    //     for (let item in items) {
-    //         tempuserMngArr.push(items[item].id);
-    //     }
-    //     this.props.selectedItems({ userManagerIDs: tempuserMngArr });
-    //     this.setState({ userManagerIDs: tempuserMngArr });
-    // }
-
 }

@@ -17,7 +17,13 @@ export default class FormularioRtre extends React.Component<IFormularioRtreProps
   public render(): React.ReactElement<IFormularioRtreProps> {
     return (
       <div style={divStyle}>
-        <Solicitacao onChange={e => this.change(e)} context={this.props.context}/>
+        <Solicitacao 
+          onChange={e => this.change(e)} 
+          context={this.props.context}
+          item={this.props.item}
+          tipoSolicitacao={this.props.tipoSolicitacao}
+          prazoValidade={this.props.prazoValidade}
+          />
         <div>{JSON.stringify(this.state)}</div>
       </div>
     );
