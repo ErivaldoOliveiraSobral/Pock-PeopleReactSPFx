@@ -22,13 +22,16 @@ export class Solicitacao extends React.Component<any, any> {
     public render() {
         return (
             <div className={styles.solicitacao}>
-                {/* <TextField name="NomeSolicitante" label="Solicitante" onChange={e => this.change(e)} /> */}
-                <CustomPeople errorMessage={this.state.NomeSolicitante} selectedItems={e => this.changeSelectedPeople(e)} context={this.props.context}/>
-                {/* <TextField label="Item" /> */}
-                <label>Item</label>
-                <CustomDropDown values={this.props.item} />
-                <TextField label="Tipo de Solicitação" />
-                <TextField label="Prazo de Validade" />
+                <TextField name="Teste TextField" label="Solicitante" onChange={e => this.changeTextField(e)} />
+
+                <CustomPeople errorMessage={this.state.NomeSolicitante} selectedItems={e => this.changeCustomPeople(e)} context={this.props.context}/>
+
+                <CustomDropDown id="item" label="item" values={this.props.item} onChange={e => this.changeCustomDropDown(e)}/>
+
+                <CustomDropDown id="tipoSolicitacao" label="tipoSolicitacao" values={this.props.tipoSolicitacao} onChange={e => this.changeCustomDropDown(e)}/>
+
+                <CustomDropDown id="prazoValidade" label="prazoValidade" values={this.props.prazoValidade} onChange={e => this.changeCustomDropDown(e)}/>
+ 
                 <TextField label="Aprovador" />
                 <div className={styles.positionButton}>
                     <PrimaryButton
@@ -54,19 +57,23 @@ export class Solicitacao extends React.Component<any, any> {
         );
     }
 
-    change(e) {
+    changeTextField(e) {
         this.props.onChange({ [e.target.name]: e.target.value });
-        this.setState({
-            [e.target.name]: e.target.value
-        });
+        this.setState({ [e.target.name]: e.target.value });
     }
 
-    changeSelectedPeople(items: any[]) {
+    changeCustomPeople(items: any[]) {
         let tempuserMngArr = [];
         for (let item in items) {
             tempuserMngArr.push(items[item].id);
         }
         this.props.onChange({ NomeSolicitante: tempuserMngArr });
         this.setState({ NomeSolicitante: tempuserMngArr });
+    }
+
+    changeCustomDropDown(e) {
+        this.props.onChange({ [e.target.id]: e.target.textContent });
+        this.setState({ [e.target.id]: e.target.textContent });
+        console.log("target: " + e.target.id + " text: " + e.target.textContent);
     }
 };
