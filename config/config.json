@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "formulario-rtre-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/formularioRtre/FormularioRtreWebPart.js",
+          "manifest": "./src/webparts/formularioRtre/FormularioRtreWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "FormularioRtreWebPartStrings": "lib/webparts/formularioRtre/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}
