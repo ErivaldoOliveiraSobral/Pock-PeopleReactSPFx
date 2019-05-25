@@ -73,7 +73,8 @@ export default class FormularioRtreWebPart extends BaseClientSideWebPart<IFormul
               groupFields: [
                 PropertyPaneTextField('tipoSolicitacao', {
                   label: "Tipo de Solicitação",
-                  multiline: true
+                  multiline: true,
+                  description: 'Separar por " ; " Ex.: item 1;item 2;item 3'
                 })
               ]
             },
@@ -81,7 +82,8 @@ export default class FormularioRtreWebPart extends BaseClientSideWebPart<IFormul
               groupFields: [
                 PropertyPaneTextField('prazoValidade', {
                   label: "Prazo de Validade",
-                  multiline: true
+                  multiline: true,
+                  description: 'Separar por " ; " Ex.: item 1;item 2;item 3'
                 })
               ]
             }

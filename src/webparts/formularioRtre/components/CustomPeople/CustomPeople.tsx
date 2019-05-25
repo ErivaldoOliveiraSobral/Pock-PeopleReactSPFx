@@ -25,7 +25,7 @@ export class CustomPeople extends React.Component<any, any> {
                     isRequired={true}
                     disabled={false}
                     selectedItems={this.props.selectedItems}
-                    errorMessage={(this.props.errorMessage.length === 0 && this.state.onSubmission === true) ? this.state.required : " "}
+                    // errorMessage={(this.props.errorMessage.length === 0 && this.state.onSubmission === true) ? this.state.required : " "}
                     // errorMessageclassName={styles.hideElementManager}
                 />
             </div>

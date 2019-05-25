@@ -1,6 +1,4 @@
 import * as React from "react";
-import { ISolicitacaoProps } from "../Formulario/ISolicitacaoProps";
-import { ISolicitacaoState } from "../Formulario/ISolicitacaoState";
 import styles from "./Solicitacao.module.scss";
 
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
@@ -9,7 +7,7 @@ import { CustomPeople } from "../CustomPeople/CustomPeople";
 import { CustomDropDown } from "../CustomDropDown/CustomDropDown";
 
 export class Solicitacao extends React.Component<any, any> {
-    constructor(props: ISolicitacaoProps) {
+    constructor(props: any) {
         super(props);
         this.state = {
             NomeSolicitante: [],
@@ -22,16 +20,29 @@ export class Solicitacao extends React.Component<any, any> {
     public render() {
         return (
             <div className={styles.solicitacao}>
-                <TextField name="Teste TextField" label="Solicitante" onChange={e => this.changeTextField(e)} />
+                {/* <TextField 
+                    label="Teste TextField" 
+                    name="NomeSolicitante" 
+                    onChange={e => this.changeTextField(e)} /> */}
+                <CustomPeople 
+                    selectedItems={e => this.changeCustomPeople(e)} 
+                    context={this.props.context} />
+                <CustomDropDown 
+                    label="Item" 
+                    name="Item"
+                    values={this.props.item} 
+                    onChange={e => this.changeCustomDropDown1(e)} />
+                <CustomDropDown 
+                    label="Tipo de Solicitação" 
+                    name="TipoSolicitacao" 
+                    values={this.props.tipoSolicitacao} 
+                    onChange={e => this.changeCustomDropDown2(e)} />
+                <CustomDropDown 
+                    label="Prazo de Validade" 
+                    name="DataPrazoAprovacao" 
+                    values={this.props.prazoValidade} 
+                    onChange={e => this.changeCustomDropDown3(e)} />
 
-                <CustomPeople errorMessage={this.state.NomeSolicitante} selectedItems={e => this.changeCustomPeople(e)} context={this.props.context}/>
-
-                <CustomDropDown id="item" label="item" values={this.props.item} onChange={e => this.changeCustomDropDown(e)}/>
-
-                <CustomDropDown id="tipoSolicitacao" label="tipoSolicitacao" values={this.props.tipoSolicitacao} onChange={e => this.changeCustomDropDown(e)}/>
-
-                <CustomDropDown id="prazoValidade" label="prazoValidade" values={this.props.prazoValidade} onChange={e => this.changeCustomDropDown(e)}/>
- 
                 <TextField label="Aprovador" />
                 <div className={styles.positionButton}>
                     <PrimaryButton
@@ -40,7 +51,7 @@ export class Solicitacao extends React.Component<any, any> {
                         // disabled={disabled}
                         // checked={checked}
                         text="Salvar"
-                        // onClick={this._alertClicked}
+                        onClick={this._alertClicked}
                         allowDisabledFocus={true}
                     />
                     <DefaultButton
@@ -50,12 +61,15 @@ export class Solicitacao extends React.Component<any, any> {
                         // disabled={disabled}
                         // checked={checked}
                         text="Cancelar"
-                    // onClick={this._alertClicked}
+                        onClick={this._alertClicked}
                     />
                 </div>
             </div>
         );
     }
+    _alertClicked() {
+        window.location.reload();
+    };
 
     changeTextField(e) {
         this.props.onChange({ [e.target.name]: e.target.value });
@@ -71,9 +85,16 @@ export class Solicitacao extends React.Component<any, any> {
         this.setState({ NomeSolicitante: tempuserMngArr });
     }
 
-    changeCustomDropDown(e) {
-        this.props.onChange({ [e.target.id]: e.target.textContent });
-        this.setState({ [e.target.id]: e.target.textContent });
-        console.log("target: " + e.target.id + " text: " + e.target.textContent);
+    changeCustomDropDown1(e) {
+        this.props.onChange({ Item: e.target.textContent });
+        this.setState({ Item: e.target.textContent });
+    }
+    changeCustomDropDown2(e) {
+        this.props.onChange({ TipoSolicitacao: e.target.textContent });
+        this.setState({ TipoSolicitacao: e.target.textContent });
+    }
+    changeCustomDropDown3(e) {
+        this.props.onChange({ DataPrazoAprovacao: e.target.textContent });
+        this.setState({ DataPrazoAprovacao: e.target.textContent });
     }
 };
