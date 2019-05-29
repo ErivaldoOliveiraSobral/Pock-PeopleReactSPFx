@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { PeoplePicker } from "@pnp/spfx-controls-react/lib/PeoplePicker";
+import { PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/PeoplePicker";
 import styles from '../CustomPeople/CustomPeople.module.scss';
 
 export class CustomPeople extends React.Component<any, any> {
@@ -22,6 +22,7 @@ export class CustomPeople extends React.Component<any, any> {
                     personSelectionLimit={1}
                     groupName={""} // Leave this blank in case you want to filter from all users
                     showtooltip={false}
+                    principalTypes={[PrincipalType.User]}
                     isRequired={true}
                     disabled={false}
                     selectedItems={this.props.selectedItems}

@@ -6,7 +6,6 @@ export class CustomDropDown extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
-            dpselectedItem: 'Item',
             options: [],
         }
     }
@@ -30,13 +29,11 @@ export class CustomDropDown extends React.Component<any, any> {
     }
 
     public render() {
-        const { dpselectedItem, dpselectedItems } = this.state;
         return (
             <Dropdown
-                placeHolder="Selecione uma opção"
+                placeholder="Selecione uma opção"
                 label={this.props.label}
-                id="Item"
-                selectedKey={this.props.name}
+                defaultSelectedKey=''
                 options={this.state.options}
                 onChange={this.props.onChange}
                 // onFocus={this._log('onFocus called')}

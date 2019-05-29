@@ -17,13 +17,14 @@ export class Solicitacao extends React.Component<any, any> {
             DataPrazoAprovacao: '',
         };
     }
+
     public render() {
         return (
             <div className={styles.solicitacao}>
-                {/* <TextField 
+                <TextField 
                     label="Teste TextField" 
                     name="NomeSolicitante" 
-                    onChange={e => this.changeTextField(e)} /> */}
+                    onChange={e => this.changeTextField(e)} />
                 <CustomPeople 
                     selectedItems={e => this.changeCustomPeople(e)} 
                     context={this.props.context} />
@@ -34,16 +35,17 @@ export class Solicitacao extends React.Component<any, any> {
                     onChange={e => this.changeCustomDropDown1(e)} />
                 <CustomDropDown 
                     label="Tipo de Solicitação" 
-                    name="TipoSolicitacao" 
                     values={this.props.tipoSolicitacao} 
                     onChange={e => this.changeCustomDropDown2(e)} />
                 <CustomDropDown 
                     label="Prazo de Validade" 
-                    name="DataPrazoAprovacao" 
                     values={this.props.prazoValidade} 
                     onChange={e => this.changeCustomDropDown3(e)} />
+                <TextField 
+                    label="Aprovador" 
+                    value="Teste"
+                    readOnly />
 
-                <TextField label="Aprovador" />
                 <div className={styles.positionButton}>
                     <PrimaryButton
                         className={styles.spacingButton}
