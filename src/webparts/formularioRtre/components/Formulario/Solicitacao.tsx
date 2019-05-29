@@ -5,6 +5,7 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react';
 import { CustomPeople } from "../CustomPeople/CustomPeople";
 import { CustomDropDown } from "../CustomDropDown/CustomDropDown";
+import { CustomPeopleAd } from "../CustomPeopleAd/CustomPeopleAd";
 
 export class Solicitacao extends React.Component<any, any> {
     constructor(props: any) {
@@ -41,9 +42,9 @@ export class Solicitacao extends React.Component<any, any> {
                     label="Prazo de Validade" 
                     values={this.props.prazoValidade} 
                     onChange={e => this.changeCustomDropDown3(e)} />
-                <TextField 
-                    label="Aprovador" 
-                    value={this.props.extensionAttribute}
+                <CustomPeopleAd 
+                    extensionAttribute={this.props.extensionAttribute}
+                    context={this.props.context}
                     readOnly />
 
                 <div className={styles.positionButton}>
