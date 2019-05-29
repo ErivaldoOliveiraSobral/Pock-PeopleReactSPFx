@@ -6,4 +6,5 @@ export interface IFormularioRtreProps {
   item: string;
   tipoSolicitacao: string;
   prazoValidade: string;
+  extensionAttribute: string;
 }

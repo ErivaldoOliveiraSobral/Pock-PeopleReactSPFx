@@ -16,6 +16,7 @@ export interface IFormularioRtreWebPartProps {
   item: string;
   tipoSolicitacao: string;
   prazoValidade: string;
+  extensionAttribute: string;
 }
 
 export default class FormularioRtreWebPart extends BaseClientSideWebPart<IFormularioRtreWebPartProps> {
@@ -28,7 +29,8 @@ export default class FormularioRtreWebPart extends BaseClientSideWebPart<IFormul
         context: this.context,
         item: this.properties.item,
         tipoSolicitacao: this.properties.tipoSolicitacao,
-        prazoValidade: this.properties.prazoValidade
+        prazoValidade: this.properties.prazoValidade,
+        extensionAttribute: this.properties.extensionAttribute
       }
     );
 
@@ -51,11 +53,19 @@ export default class FormularioRtreWebPart extends BaseClientSideWebPart<IFormul
             description: strings.PropertyPaneDescription
           },
           groups: [
+            // {
+            //   groupName: strings.BasicGroupName,
+            //   groupFields: [
+            //     PropertyPaneTextField('description', {
+            //       label: strings.DescriptionFieldLabel
+            //     })
+            //   ],
+            // },
             {
-              groupName: strings.BasicGroupName,
+              groupName: strings.ExtensionGroup,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('extensionAttribute', {
+                  label: strings.ExtensionDescription
                 })
               ],
             },

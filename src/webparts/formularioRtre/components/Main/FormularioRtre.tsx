@@ -20,6 +20,7 @@ export default class FormularioRtre extends React.Component<IFormularioRtreProps
         <Solicitacao 
           onChange={e => this.change(e)} 
           context={this.props.context}
+          extensionAttribute={this.props.extensionAttribute}
           item={this.props.item}
           tipoSolicitacao={this.props.tipoSolicitacao}
           prazoValidade={this.props.prazoValidade}

@@ -21,10 +21,10 @@ export class Solicitacao extends React.Component<any, any> {
     public render() {
         return (
             <div className={styles.solicitacao}>
-                <TextField 
+                {/* <TextField 
                     label="Teste TextField" 
                     name="NomeSolicitante" 
-                    onChange={e => this.changeTextField(e)} />
+                    onChange={e => this.changeTextField(e)} /> */}
                 <CustomPeople 
                     selectedItems={e => this.changeCustomPeople(e)} 
                     context={this.props.context} />
@@ -43,7 +43,7 @@ export class Solicitacao extends React.Component<any, any> {
                     onChange={e => this.changeCustomDropDown3(e)} />
                 <TextField 
                     label="Aprovador" 
-                    value="Teste"
+                    value={this.props.extensionAttribute}
                     readOnly />
 
                 <div className={styles.positionButton}>
